@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Service.Pro - Dépannage Informatique à Niamey</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1a7a5a; /* Vert foncé du logo */
+            --primary-dark: #0f5c42;
+            --accent: #f4a261; /* Orange du logo */
+            --dark: #0a1628;
+            --dark-light: #0d1f35;
+            --text: #ffffff;
+            --text-muted: #b0c4d8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(13, 31, 53, 0.98);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .logo-svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .phone-number {
+            border: 2px solid var(--primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phone-number:hover {
+            background-color: var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .subtitle {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span { color: var(--primary); }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            background: linear-gradient(135deg, var(--dark-light), var(--primary-dark));
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            border: 2px solid rgba(45, 138, 110, 0.3);
+            position: relative;
+        }
+
+        .hero-visual svg {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(45, 138, 110, 0.5);
+            white-space: nowrap;
+        }
+
+        /* Section commune */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header .subtitle {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--dark-light);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(45, 138, 110, 0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(45, 138, 110, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .service-card .price-tag {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.4rem 1rem;
+            background: rgba(244, 162, 97, 0.2);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Pricing */
+        .pricing {
+            background-color: var(--dark-light);
+            padding: 5rem 2rem;
+        }
+
+        .pricing-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background-color: var(--dark);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(45, 138, 110, 0.2);
+        }
+
+        .pricing-card.featured::before {
+            content: '⭐ POPULAIRE';
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .pricing-card .icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card.free .icon { background: rgba(45, 138, 110, 0.2); }
+        .pricing-card.paid .icon { background: rgba(244, 162, 97, 0.2); }
+
+        .pricing-card h3 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+        .pricing-card .price { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-muted); }
+        .pricing-card.free .price { color: var(--primary); }
+        .pricing-card.paid .price { color: var(--accent); }
+
+        .pricing-card ul { list-style: none; margin-bottom: 2rem; }
+
+        .pricing-card li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pricing-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Why us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--dark-light);
+            border-radius: 16px;
+            border: 1px solid rgba(45, 138, 110, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(45, 138, 110, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .feature-item h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+        .feature-item p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--dark-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-stars { color: var(--accent); margin-bottom: 1rem; }
+        .testimonial-card p { color: var(--text-muted); font-style: italic; margin-bottom: 1.5rem; }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-author strong { display: block; }
+        .testimonial-author span { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* CTA */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            text-align: center;
+        }
+
+        .cta-content { max-width: 700px; margin: 0 auto; }
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
+
+        .cta-section .btn {
+            background: white;
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            padding: 1.2rem 2.5rem;
+        }
+
+        .cta-section .btn:hover { transform: translateY(-3px); }
+
+        /* Footer */
+        footer {
+            background-color: #050d1a;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-col p, .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .footer-col a:hover { color: var(--primary); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero h1 { font-size: 2.2rem; }
+            .section-header h2 { font-size: 2rem; }
+            .cta-section h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <svg class="logo-svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#e8f5f0" stroke="#1a7a5a" stroke-width="3"/>
+                    <path d="M 50 10 A 40 40 0 1 0 50 90 A 30 30 0 1 1 50 30 A 20 20 0 1 0 50 70" fill="#1a7a5a"/>
+                    <circle cx="65" cy="50" r="18" fill="#f4a261"/>
+                    <circle cx="65" cy="50" r="8" fill="#e8f5f0"/>
+                    <rect x="63" y="28" width="4" height="8" fill="#f4a261"/>
+                    <rect x="63" y="64" width="4" height="8" fill="#f4a261"/>
+                    <rect x="43" y="48" width="8" height="4" fill="#f4a261"/>
+                    <rect x="79" y="48" width="8" height="4" fill="#f4a261"/>
+                    <rect x="50" y="35" width="4" height="6" fill="#f4a261" transform="rotate(45 52 38)"/>
+                    <rect x="76" y="61" width="4" height="6" fill="#f4a261" transform="rotate(45 78 64)"/>
+                    <rect x="50" y="59" width="4" height="6" fill="#f4a261" transform="rotate(-45 52 62)"/>
+                    <rect x="76" y="33" width="4" height="6" fill="#f4a261" transform="rotate(-45 78 36)"/>
+                </svg>
+                <span>Maintenance Service.Pro</span>
+            </div>
+            <a href="tel:80423483" class="phone-number">📞 80 42 34 83</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div>
+            <p class="subtitle">Dépannage informatique — Niamey</p>
+            <h1>Votre PC ne devrait <span>jamais</span> vous arrêter</h1>
+            <p>Dépannage, optimisation et sécurité informatique pour particuliers et professionnels à Niamey. <strong>Diagnostic gratuit</strong> avant toute intervention, avec des <strong>prix abordables</strong>.</p>
+            <div class="cta-buttons">
+                <a href="tel:80423483" class="btn btn-primary">📞 Appeler maintenant</a>
+                <a href="https://wa.me/22780423483" class="btn btn-secondary" target="_blank">💬 WhatsApp</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="#e8f5f0" stroke="#1a7a5a" stroke-width="3"/>
+                <path d="M 50 10 A 40 40 0 1 0 50 90 A 30 30 0 1 1 50 30 A 20 20 0 1 0 50 70" fill="#1a7a5a"/>
+                <circle cx="65" cy="50" r="18" fill="#f4a261"/>
+                <circle cx="65" cy="50" r="8" fill="#e8f5f0"/>
+                <rect x="63" y="28" width="4" height="8" fill="#f4a261"/>
+                <rect x="63" y="64" width="4" height="8" fill="#f4a261"/>
+                <rect x="43" y="48" width="8" height="4" fill="#f4a261"/>
+                <rect x="79" y="48" width="8" height="4" fill="#f4a261"/>
+            </svg>
+            <div class="hero-badge">✅ Diagnostic 100% Gratuit</div>
+        </div>
+    </section>
+
+    <!-- Services Payants -->
+    <section class="section">
+        <div class="section-header">
+            <p class="subtitle">Nos prestations</p>
+            <h2>Services Payants</h2>
+            <p>Des solutions professionnelles à <strong>prix abordables</strong>. Le prix varie selon l'intervention.</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service 1 : Dépannage (Emoji corrigé) -->
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Dépannage</h3>
+                <p>Réparation de tous types de pannes : écran bleu, lenteur, démarrage impossible, surchauffe.</p>
+                <span class="price-tag">Prix selon intervention</span>
+            </div>
+
+            <!-- Service 2 : Optimisation -->
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Optimisation PC lents</h3>
+                <p>Accélération de votre ordinateur + installation d'antivirus pour une protection complète.</p>
+                <span class="price-tag">Prix selon intervention</span>
+            </div>
+
+            <!-- Service 3 : Installation Windows -->
+            <div class="service-card">
+                <div class="service-icon">💿</div>
+                <h3>Installation Windows</h3>
+                <p>Installation ou réinstallation de Windows + mise à jour Office incluse.</p>
+                <span class="price-tag">Prix selon intervention</span>
+            </div>
+
+            <!-- Service 4 : Déblocage PC -->
+            <div class="service-card">
+                <div class="service-icon">🔓</div>
+                <h3>Déblocage PC</h3>
+                <p>Déblocage de PC bloqué, mot de passe oublié, écran verrouillé.</p>
+                <span class="price-tag">Prix selon intervention</span>
+            </div>
+
+            <!-- Service 5 : Suppression de virus -->
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Suppression de virus</h3>
+                <p>Nettoyage complet + installation d'antivirus gratuit ou payant selon vos besoins.</p>
+                <span class="price-tag">Prix selon intervention</span>
+            </div>
+
+            <!-- Service 6 : Clonage / Backup (Emoji corrigé) -->
+            <div class="service-card">
+                <div class="service-icon">🗄️</div>
+                <h3>Clonage de Disk / Backup</h3>
+                <p>Clonage de disque dur ou sauvegarde complète de vos données importantes.</p>
+                <span class="price-tag">Prix selon intervention</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Gratuits -->
+    <section class="pricing">
+        <div class="pricing-content">
+            <div class="section-header">
+                <p class="subtitle">Sans engagement</p>
+                <h2>Service Gratuit</h2>
+                <p>Parce que la transparence est importante, nous offrons un diagnostic complet avant tout devis.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card free">
+                    <div class="icon">🎁</div>
+                    <h3>Gratuit</h3>
+                    <div class="price">0 FCFA</div>
+                    <ul>
+                        <li>Diagnostic complet avant tout devis</li>
+                        <li>Activation Windows 6 mois gratuite</li>
+                        <li>Aucun engagement : vous décidez après le diagnostic</li>
+                    </ul>
+                    <a href="https://wa.me/22780423483" class="btn btn-primary" target="_blank">💬 Demander un diagnostic</a>
+                </div>
+
+                <div class="pricing-card paid">
+                    <div class="icon">🧰</div>
+                    <h3>Interventions</h3>
+                    <div class="price">Prix abordables</div>
+                    <ul>
+                        <li>Mise à jour Office : 7 000 FCFA</li>
+                        <li>Garantie 1 mois sur l'installation de Windows</li>
+                        <li>Prix communiqué selon l'intervention</li>
+                    </ul>
+                    <a href="tel:80423483" class="btn btn-primary">📞 Demander un prix</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pourquoi nous -->
+    <section class="section">
+        <div class="section-header">
+            <p class="subtitle">Pourquoi nous choisir</p>
+            <h2>Un service simple et clair</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">🔍</div>
+                <h3>Diagnostic gratuit</h3>
+                <p>Vous savez ce qui ne va pas avant de payer quoi que ce soit.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <h3>Prix abordables</h3>
+                <p>Des tarifs adaptés aux particuliers et aux professionnels de Niamey.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✅</div>
+                <h3>Garantie 1 mois</h3>
+                <p>Sur toute installation ou réinstallation de Windows.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💬</div>
+                <h3>Contact direct</h3>
+                <p>Appelez ou écrivez sur WhatsApp, vous parlez directement au technicien.</p>
+            </div>
+        </div>
+
+        <!-- Témoignages : à ajouter quand vous aurez de vrais avis clients.
+             Les styles .testimonials-grid et .testimonial-card sont déjà prêts. -->
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Un problème avec votre PC ?</h2>
+            <p>Contactez-nous maintenant. Le diagnostic est gratuit.</p>
+            <a href="https://wa.me/22780423483" class="btn" target="_blank">💬 Écrire sur WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Maintenance Service.Pro</h4>
+                <p>Dépannage, optimisation et sécurité informatique à Niamey.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="tel:80423483">📞 80 42 34 83</a>
+                <a href="https://wa.me/22780423483" target="_blank">💬 WhatsApp</a>
+            </div>
+            <div class="footer-col">
+                <h4>Adresse</h4>
+                <p>Bobiel Ahmed Store (derrière Bédir)<br>Niamey, Niger</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Maintenance Service.Pro. Tous droits réservés.
+        </div>
+    </footer>
+</body>
+</html>
